@@ -1,0 +1,5 @@
+Description:
+    Add a mean module to the project
+
+Example:
+    yo inspinia-mean:add-module user
