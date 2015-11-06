@@ -90,7 +90,34 @@ module.exports = yeoman.generators.Base.extend({
     }
   },
 
-  copyTemplates: function() {
+  copyBlankTypeTemplates: function() {
+
+    if (this.pageType !== 'Blank') return;
+
+    this.fs.copyTpl(
+      this.templatePath('./_blank_ctrl.js'),
+      this.destinationPath(ctrlFolderPath + this.ctrlName + '.client.controller.js'),
+      {
+        moduleName             : this.moduleName,
+        firstCapCamelCtrlName  : this.firstCapCamelCtrlName,
+        firstCapCamelModuleName: this.firstCapCamelModuleName
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('./_blank_tpl.html'),
+      this.destinationPath(tplFolderPath + this.ctrlName + '.client.view.html'),
+      {
+        moduleName             : this.moduleName,
+        firstCapCamelCtrlName  : this.firstCapCamelCtrlName,
+        firstCapCamelModuleName: this.firstCapCamelModuleName
+      }
+    );
+  },
+
+  copyListTypeTemplates: function() {
+
+    if (this.pageType !== 'List') return;
 
     var self = this;
 
@@ -177,6 +204,7 @@ module.exports = yeoman.generators.Base.extend({
         }
       });
   },
+
 
   addRoute: function() {
     var fullPath = 'modules/' + this.moduleName + '/client/config/' + this.moduleName + '.client.routes.js';

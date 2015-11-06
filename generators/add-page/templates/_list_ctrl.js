@@ -65,6 +65,7 @@
        */
       $scope.reset = function() {
         $scope.searchParams = _.clone(defQueryParams);
+        $scope.search();
       };
 
       /**
@@ -82,6 +83,7 @@
        */
       $scope.sortSearch = function(sort, field) {
         console.log(sort, field);
+        $scope.search();
       };
 
       /*========== Listeners ==================================================*/
