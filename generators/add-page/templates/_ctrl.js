@@ -1,12 +1,11 @@
-/**
- * Created by danielxiao on 15/1/28.
- */
 
-(function() {
+(function(_) {
+
+  'use strict';
 
   angular.module('<%= moduleName %>').controller('<%= firstCapCamelCtrlName %>Controller', ['$scope', '$stateParams', '$location', '<%= firstCapCamelModuleName %>',
 
-    function <%= firstCapCamelCtrlName %>Controller($scope, $stateParams, $location, <%= firstCapCamelModuleName %>) {
+    function ($scope, $stateParams, $location, <%= firstCapCamelModuleName %>) {
 
       /*========== Scope Models ==================================================*/
 
@@ -28,4 +27,4 @@
     }
   ]);
 
-})();
+})(window._);

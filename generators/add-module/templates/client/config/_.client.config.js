@@ -11,10 +11,10 @@ angular.module('<%= moduleName %>').run(['Menus',
       roles: ['*']
     });
 
-    // Add the dropdown list item
-    Menus.addSubMenuItem('topbar', '<%= moduleName %>', {
-      title: 'List <%= firstCapCamelModuleName %>',
-      state: '<%= moduleName %>.list'
-    });
+    // Add the subMenuItem demo
+    //Menus.addSubMenuItem('topbar', '<%= moduleName %>', {
+    //  title: 'List <%= firstCapCamelModuleName %>',
+    //  state: '<%= moduleName %>.list'
+    //});
   }
 ]);
