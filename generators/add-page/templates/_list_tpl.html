@@ -1,0 +1,267 @@
+<div ng-controller="<%= firstCapCamelModuleName %><%= firstCapCamelCtrlName %>Controller" class="wrapper wrapper-content">
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <!--adv search start-->
+      <!--查询条件-->
+      <div class="ibox">
+        <div class="ibox-title">
+          <h5>查询条件</h5>
+          <div ibox-tools show-config="false" show-close="false"></div>
+        </div>
+        <div class="ibox-content">
+
+          <!--常用搜索条件-->
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="control-label">查询条件1</label>
+                <input ng-model="searchParams.param1" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="control-label">查询条件2</label>
+                <div class="query-range">
+                  <input ng-model="searchParams.param2_min" type="number" class="form-control">
+                  <p>-</p>
+                  <input ng-model="searchParams.param2_max" type="number" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="control-label">查询条件3</label>
+                <div class="query-checkbox">
+                  <label class="checkbox-inline">
+                    <input icheck ng-model="searchParams.param3_1" type="checkbox"> 可选1
+                  </label>
+                  <label class="checkbox-inline">
+                    <input icheck ng-model="searchParams.param3_2" type="checkbox"> 可选2
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--高级查询条件-->
+          <div ng-show="showAdvSearch" class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="control-label">查询条件4</label>
+                <input ng-model="searchParams.param4" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <button ng-click="search()" type="button" class="btn btn-w-m btn-warning">查询</button>
+              <button ng-click="reset()" type="button" class="btn btn-w-m btn-info">重置</button>
+              <button btn-checkbox ng-model="showAdvSearch" type="button" class="btn btn-w-m btn-primary pull-right">高级查询</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--adv search end-->
+
+      <!--normal search start-->
+      <!--搜索条件-->
+      <div class="ibox-content m-b-sm border-bottom">
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label class="control-label">查询条件1</label>
+              <input ng-model="searchParams.param1" type="text" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label class="control-label">查询条件2</label>
+              <div class="query-range">
+                <input ng-model="searchParams.param2_min" type="number" class="form-control">
+                <p>-</p>
+                <input ng-model="searchParams.param2_max" type="number" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label class="control-label">查询条件2</label>
+              <div class="query-checkbox">
+                <label class="checkbox-inline">
+                  <input icheck ng-model="searchParams.param3_1" type="checkbox"> 可选1
+                </label>
+                <label class="checkbox-inline">
+                  <input icheck ng-model="searchParams.param3_2" type="checkbox"> 可选2
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <button ng-click="search()" type="button" class="btn btn-w-m btn-warning">查询</button>
+            <button ng-click="reset()" type="button" class="btn btn-w-m btn-info">重置</button>
+          </div>
+        </div>
+      </div>
+      <!--normal search end-->
+
+      <div class="row">
+
+        <div class="col-lg-12">
+          <div class="ibox">
+            <div class="ibox-content">
+
+              <!--工具栏-->
+              <div class="row">
+                <div class="col-lg-12">
+
+                  <!--select all start-->
+                  <button ng-click="batchRemoveItems()" type="button" class="btn btn-w-m btn-primary">批量删除</button>
+                  <!--select all end-->
+
+                  <div class="tool-bar-right">
+
+                    <!--column config start-->
+                    <!--显示列设置-->
+                    <div class="dropdown" dropdown>
+                      <button dropdown-toggle type="button" class="btn btn-sm btn-white"> <i class="fa fa-cogs"></i> </button>
+                      <div class="dropdown-menu dropdown-messages dropdown-column-config">
+                        <div class="row">
+                          <div ng-repeat="item in allTableColumns" class="col-sm-4">
+                            <label>
+                              <input icheck ng-model="item.checked" type="checkbox">
+                              {{::item.label}}
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--column config end-->
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="hr-line-dashed"></div>
+
+              <!--列表数据-->
+              <table d-table class="table table-striped table-hover rwd-table">
+                <thead>
+
+                <!--column config start-->
+                <tr>
+                  <!--select all start-->
+                  <th ng-show="allTableColumns[0].checked">
+                    <input icheck type="checkbox" ng-model="selectFeature.isSelectedAll" ng-change="selectFeature.selectAll()">
+                  </th>
+                  <!--select all end-->
+
+                  <th sortable-column sort-event="sortSearch($sort, allTableColumns[1].value)" ng-show="allTableColumns[1].checked">{{::allTableColumns[1].label}}</th>
+                  <th ng-show="allTableColumns[2].checked">{{::allTableColumns[2].label}}</th>
+
+                  <th ng-show="allTableColumns[3].checked">{{::allTableColumns[3].label}}</th>
+                </tr>
+                <!--column config end-->
+
+                <!--non-column config start-->
+                <tr>
+                  <!--select all start-->
+                  <th>
+                    <input icheck type="checkbox" ng-model="selectFeature.isSelectedAll" ng-change="selectFeature.selectAll()">
+                  </th>
+                  <!--select all end-->
+
+                  <th sortable-column sort-event="sortSearch($sort, allTableColumns[1].value)">{{::allTableColumns[1].label}}</th>
+                  <th>{{::allTableColumns[2].label}}</th>
+
+                  <th>{{::allTableColumns[4].label}}</th>
+                </tr>
+                <!--non-column config end-->
+
+                </thead>
+
+                <tbody>
+
+                <!--column config start-->
+                <tr ng-repeat="item in listData">
+
+                  <!--select all start-->
+                  <td ng-show="allTableColumns[0].checked" data-th="{{::allTableColumns[0].label}}">
+                    <input icheck type="checkbox" ng-model="item.checked" ng-change="selectFeature.selectItem(item.checked)">
+                  </td>
+                  <!--select all end-->
+
+                  <td ng-show="allTableColumns[1].checked" data-th="{{::allTableColumns[1].label}}">
+                    {{::item.field1}}
+                  </td>
+                  <td ng-show="allTableColumns[2].checked" data-th="{{::allTableColumns[21].label}}">
+                    {{::item.field2}}
+                  </td>
+
+                  <td ng-show="allTableColumns[3].checked" data-th="{{::allTableColumns[3].label}}">
+                    <div class="btn-group">
+                      <button class="btn-warning btn btn-sm">删除</button>
+                    </div>
+                  </td>
+
+                </tr>
+                <!--column config end-->
+
+                <!--non-column config start-->
+                <tr ng-repeat="item in listData">
+
+                  <!--select all start-->
+                  <td data-th="{{::allTableColumns[0].label}}">
+                    <input icheck type="checkbox" ng-model="item.checked" ng-change="selectFeature.selectItem(item.checked)">
+                  </td>
+                  <!--select all end-->
+
+                  <td data-th="{{::allTableColumns[1].label}}">
+                    {{::item.field1}}
+                  </td>
+                  <td data-th="{{::allTableColumns[2].label}}">
+                    {{::item.field2}}
+                  </td>
+
+                  <td data-th="{{::allTableColumns[3].label}}">
+                    <div class="btn-group">
+                      <button class="btn-warning btn btn-sm">删除</button>
+                    </div>
+                  </td>
+
+                </tr>
+                <!--non-column config end-->
+
+                </tbody>
+
+                <tfoot>
+                <tr>
+                  <td colspan="{{getVisibleColumnTotal()}}">
+                    <!--分页-->
+                    <div pagination total-items="pagerOptions.totalItems" items-per-page="pagerOptions.pageSize"
+                         ng-model="pagerOptions.pageNum" ng-change="search()" class="pull-right"></div>
+                  </td>
+                </tr>
+
+                </tfoot>
+
+              </table>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

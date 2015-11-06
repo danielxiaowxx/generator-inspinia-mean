@@ -7,7 +7,7 @@ angular.module('<%= moduleName %>').run(['Menus',
     Menus.addMenuItem('topbar', {
       title: '<%= firstCapCamelModuleName %>',
       state: '<%= moduleName %>',
-      type: 'dropdown',
+      //type: 'dropdown', // 有子菜单时把注释去掉
       roles: ['*']
     });
 

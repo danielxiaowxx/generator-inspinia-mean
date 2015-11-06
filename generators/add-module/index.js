@@ -41,7 +41,7 @@ module.exports = yeoman.generators.Base.extend({
     var self = this;
     var done = this.async();
 
-    glob(folderPath + "**/_.*.js", {}, function (er, files) {
+    glob(folderPath + "**/_.*.js", {}, function(er, files) {
       _.each(files, function(filePath) {
         var fileName = filePath.replace(/.*_/, '');
         var tplDir = filePath.replace(/\/[^\/]*$/, '');
@@ -50,6 +50,7 @@ module.exports = yeoman.generators.Base.extend({
           tplDir + '/' + self.moduleName + fileName,
           {
             moduleName             : self.moduleName,
+            camelModuleName        : self.camelModuleName,
             firstCapCamelModuleName: self.firstCapCamelModuleName
           });
       });
