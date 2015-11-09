@@ -53,8 +53,8 @@ module.exports = yeoman.generators.Base.extend({
       insertPrev: true,
       needle    : "// Don't touch me",
       splicable : [
-        this.apiName + ": function(searchParams) {",
-        "  return utilService." + (this.apiMethodType == "get" ? "httpGet" : "httpPost") + "('/api/" + this.moduleName + "/" + this.apiName + "', _.extend(_.omit(searchParams, function(item) { return item === ''; }), {}));",
+        this.apiName + ": function(params) {",
+        "  return utilService." + (this.apiMethodType == "get" ? "httpGet" : "httpPost") + "('/api/" + this.moduleName + "/" + this.apiName + "', _.extend(_.omit(params, function(item) { return item === ''; }), {}));",
         "},\n"
       ]
     });
@@ -79,7 +79,7 @@ module.exports = yeoman.generators.Base.extend({
       splicable : [
         "exports." + this.apiName + " = function(req, res) {",
         "  var result = 'Hello Daniel';",
-        "  return res.json(result);",
+        "  return resultHandler.getResult(result, res);",
         "};\n"
       ]
     });

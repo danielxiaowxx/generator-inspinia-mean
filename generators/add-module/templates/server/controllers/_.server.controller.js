@@ -3,8 +3,9 @@
 /**
  * Module dependencies.
  */
-var path = require('path'),
-  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+var path = require('path');
+var errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+var resultHandler = require(path.resolve('./modules/core/server/controllers/result.server.controller'));
 
 exports.queryMockList = function(req, res) {
   var result = {
@@ -24,7 +25,7 @@ exports.queryMockList = function(req, res) {
     ],
     total: 3
   };
-  return res.json(result);
+  return resultHandler.getResult(result, res);
 };
 
 // Don't touch me
