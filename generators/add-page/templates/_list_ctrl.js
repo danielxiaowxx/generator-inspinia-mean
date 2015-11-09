@@ -86,6 +86,15 @@
         $scope.search();
       };
 
+      // -- select all start //
+      /**
+       * 批量删除
+       */
+      $scope.batchRemoveItems = function() {
+
+      };
+      // select all end -- //
+
       /*========== Listeners ==================================================*/
 
       $scope.$on('$stateChangeSuccess', function() {

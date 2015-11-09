@@ -11,8 +11,10 @@
       return {
 
         queryMockList: function(searchParams, pageNum, pageSize) {
-          return utilService.httpGet('/api/queryMockList', _.extend(_.omit(searchParams, function(item) { return item === ''; }), {pageNum: pageNum, pageSize: pageSize}));
-        }
+          return utilService.httpGet('/api/<%= moduleName %>/queryMockList', _.extend(_.omit(searchParams, function(item) { return item === ''; }), {pageNum: pageNum, pageSize: pageSize}));
+        },
+
+        // Don't touch me
 
       };
     }

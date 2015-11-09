@@ -76,12 +76,13 @@ module.exports = yeoman.generators.Base.extend({
           }
 
           return _.template(contents, {})({
-            moduleName            : self.moduleName,
-            firstCapCamelModalName: self.firstCapCamelModalName
+            moduleName             : self.moduleName,
+            firstCapCamelModalName : self.firstCapCamelModalName,
+            firstCapCamelModuleName: self.firstCapCamelModuleName
           });
         }
       });
-    
+
     this.fs.copy(
       this.templatePath('./_tpl.html'),
       this.destinationPath(tplFolderPath + this.modalName + '.client.view.html'),
@@ -100,8 +101,9 @@ module.exports = yeoman.generators.Base.extend({
           }
 
           return _.template(contents, {})({
-            modalName             : self.modalName,
-            firstCapCamelModalName: self.firstCapCamelModalName
+            modalName              : self.modalName,
+            firstCapCamelModalName : self.firstCapCamelModalName,
+            firstCapCamelModuleName: self.firstCapCamelModuleName
           });
         }
       });
@@ -113,7 +115,7 @@ module.exports = yeoman.generators.Base.extend({
     logger.log("var modalInstance = $modal.open({");
     // modules/products/client/views/list.client.view.html
     logger.log("  templateUrl: 'modules/" + this.moduleName + "/client/views/" + this.modalName + ".client.view.html',");
-    logger.log("  controller: '" + this.firstCapCamelModalName + "Controller'");
+    logger.log("  controller: '" + this.firstCapCamelModuleName + this.firstCapCamelModalName + "Controller'");
     logger.log("});");
     logger.log("");
     logger.log("modalInstance.result.then(function () {");

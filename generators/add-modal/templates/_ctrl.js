@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModalName %>Controller', ['$scope', '$modalInstance',
+  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelModalName %>Controller', ['$scope', '$modalInstance',
 
     function ($scope, $modalInstance) {
 
