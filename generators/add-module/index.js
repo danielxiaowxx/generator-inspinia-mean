@@ -41,7 +41,7 @@ module.exports = yeoman.generators.Base.extend({
     var self = this;
     var done = this.async();
 
-    glob(folderPath + "**/_.*.js", {}, function(er, files) {
+    glob(folderPath + "**/_.*", {}, function(er, files) {
       _.each(files, function(filePath) {
         var fileName = filePath.replace(/.*_/, '');
         var tplDir = filePath.replace(/\/[^\/]*$/, '');
@@ -61,6 +61,7 @@ module.exports = yeoman.generators.Base.extend({
 
   removeFiles: function() {
     common.removeFiles(this, [
+      'client/assets/less/_.less',
       'client/_.*.js',
       'client/config/_.*.js',
       'client/services/_.*.js',

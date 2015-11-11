@@ -245,7 +245,8 @@
                   <td colspan="{{getVisibleColumnTotal()}}">
                     <!--分页-->
                     <div pagination total-items="pagerOptions.totalItems" items-per-page="pagerOptions.pageSize"
-                         ng-model="pagerOptions.pageNum" ng-change="search()" class="pull-right"></div>
+                      ng-model="pagerOptions.pageNum" max-size="5" direction-links="false" boundary-links="true"
+                      ng-change="search()" class="pull-right"></div>
                   </td>
                 </tr>
 

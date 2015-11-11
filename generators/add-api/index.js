@@ -79,7 +79,7 @@ module.exports = yeoman.generators.Base.extend({
       splicable : [
         "exports." + this.apiName + " = function(req, res) {",
         "  var result = 'Hello Daniel';",
-        "  return resultHandler.getResult(result, res);",
+        "  return res.json(result);",
         "};\n"
       ]
     });

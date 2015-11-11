@@ -4,8 +4,11 @@
  * Module dependencies.
  */
 var path = require('path');
-var errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
-var resultHandler = require(path.resolve('./modules/core/server/controllers/result.server.controller'));
+var url = require('url');
+var _ = require('lodash');
+var GMAPI = require('gm-open-api');
+
+var gmRequest = require(path.resolve('./modules/core/server/common/gmRequest'));
 
 exports.queryMockList = function(req, res) {
   var result = {
@@ -25,7 +28,7 @@ exports.queryMockList = function(req, res) {
     ],
     total: 3
   };
-  return resultHandler.getResult(result, res);
+  return res.json(result);
 };
 
 // Don't touch me
