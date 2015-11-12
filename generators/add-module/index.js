@@ -65,6 +65,7 @@ module.exports = yeoman.generators.Base.extend({
       'client/_.*.js',
       'client/config/_.*.js',
       'client/services/_.*.js',
+      'server/common/_.*.js',
       'server/controllers/_.*.js',
       'server/models/_.*.js',
       'server/policies/_.*.js',

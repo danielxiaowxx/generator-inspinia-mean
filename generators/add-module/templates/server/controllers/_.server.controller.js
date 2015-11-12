@@ -7,10 +7,11 @@ var path = require('path');
 var url = require('url');
 var _ = require('lodash');
 var GMAPI = require('gm-open-api');
+var Promise = require('bluebird');
 
 var gmRequest = require(path.resolve('./modules/core/server/common/gmRequest'));
 
-exports.queryMockList = function(req, res) {
+exports.queryMockList = function(params) {
   var result = {
     items: [
       {
@@ -28,7 +29,7 @@ exports.queryMockList = function(req, res) {
     ],
     total: 3
   };
-  return res.json(result);
+  return result;
 };
 
 // Don't touch me

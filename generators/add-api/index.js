@@ -66,7 +66,7 @@ module.exports = yeoman.generators.Base.extend({
       insertPrev: true,
       needle    : "// Don't touch me",
       splicable : [
-        "." + (this.apiMethodType == 'get' ? 'get' : 'post') + "('/" + this.apiName + "', " + this.camelModuleName + "Ctrl." + this.apiName + ")"
+        "." + (this.apiMethodType == 'get' ? 'get' : 'post') + "('/" + this.apiName + "', apiHandler(" + this.camelModuleName + "Ctrl." + this.apiName + "))"
       ]
     });
   },
@@ -77,9 +77,9 @@ module.exports = yeoman.generators.Base.extend({
       insertPrev: true,
       needle    : "// Don't touch me",
       splicable : [
-        "exports." + this.apiName + " = function(req, res) {",
+        "exports." + this.apiName + " = function(params) {",
         "  var result = 'Hello Daniel';",
-        "  return res.json(result);",
+        "  return result;",
         "};\n"
       ]
     });
