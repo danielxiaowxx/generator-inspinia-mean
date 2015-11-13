@@ -12,7 +12,71 @@
         </div>
         <div class="ibox-content">
 
-          <!--常用搜索条件-->
+          <form ng-submit="search()">
+
+            <!--常用搜索条件-->
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="control-label">查询条件1</label>
+                  <input ng-model="searchParams.param1" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="control-label">查询条件2</label>
+                  <div class="query-range">
+                    <input ng-model="searchParams.param2_min" type="number" class="form-control">
+                    <p>-</p>
+                    <input ng-model="searchParams.param2_max" type="number" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="control-label">查询条件3</label>
+                  <div class="query-checkbox">
+                    <label class="checkbox-inline">
+                      <input icheck ng-model="searchParams.param3_1" type="checkbox"> 可选1
+                    </label>
+                    <label class="checkbox-inline">
+                      <input icheck ng-model="searchParams.param3_2" type="checkbox"> 可选2
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--高级查询条件-->
+            <div ng-show="showAdvSearch" class="row">
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="control-label">查询条件4</label>
+                  <input ng-model="searchParams.param4" type="text" class="form-control">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 text-center">
+                <button type="submit" class="btn btn-w-m btn-warning">查询</button>
+                <button ng-click="reset()" type="button" class="btn btn-w-m btn-info">重置</button>
+                <button btn-checkbox ng-model="showAdvSearch" type="button" class="btn btn-w-m btn-primary pull-right">高级查询</button>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+      <!--adv search end-->
+
+      <!--normal search start-->
+      <!--搜索条件-->
+      <div class="ibox-content m-b-sm border-bottom">
+
+        <form ng-submit="search()">
+
           <div class="row">
             <div class="col-sm-3">
               <div class="form-group">
@@ -32,7 +96,7 @@
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <label class="control-label">查询条件3</label>
+                <label class="control-label">查询条件2</label>
                 <div class="query-checkbox">
                   <label class="checkbox-inline">
                     <input icheck ng-model="searchParams.param3_1" type="checkbox"> 可选1
@@ -45,68 +109,15 @@
             </div>
           </div>
 
-          <!--高级查询条件-->
-          <div ng-show="showAdvSearch" class="row">
-            <div class="col-sm-3">
-              <div class="form-group">
-                <label class="control-label">查询条件4</label>
-                <input ng-model="searchParams.param4" type="text" class="form-control">
-              </div>
-            </div>
-          </div>
-
           <div class="row">
             <div class="col-sm-12 text-center">
-              <button ng-click="search()" type="button" class="btn btn-w-m btn-warning">查询</button>
+              <button type="submit" class="btn btn-w-m btn-warning">查询</button>
               <button ng-click="reset()" type="button" class="btn btn-w-m btn-info">重置</button>
-              <button btn-checkbox ng-model="showAdvSearch" type="button" class="btn btn-w-m btn-primary pull-right">高级查询</button>
             </div>
           </div>
-        </div>
-      </div>
-      <!--adv search end-->
 
-      <!--normal search start-->
-      <!--搜索条件-->
-      <div class="ibox-content m-b-sm border-bottom">
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="form-group">
-              <label class="control-label">查询条件1</label>
-              <input ng-model="searchParams.param1" type="text" class="form-control">
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="form-group">
-              <label class="control-label">查询条件2</label>
-              <div class="query-range">
-                <input ng-model="searchParams.param2_min" type="number" class="form-control">
-                <p>-</p>
-                <input ng-model="searchParams.param2_max" type="number" class="form-control">
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="form-group">
-              <label class="control-label">查询条件2</label>
-              <div class="query-checkbox">
-                <label class="checkbox-inline">
-                  <input icheck ng-model="searchParams.param3_1" type="checkbox"> 可选1
-                </label>
-                <label class="checkbox-inline">
-                  <input icheck ng-model="searchParams.param3_2" type="checkbox"> 可选2
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
+        </form>
 
-        <div class="row">
-          <div class="col-sm-12 text-center">
-            <button ng-click="search()" type="button" class="btn btn-w-m btn-warning">查询</button>
-            <button ng-click="reset()" type="button" class="btn btn-w-m btn-info">重置</button>
-          </div>
-        </div>
       </div>
       <!--normal search end-->
 

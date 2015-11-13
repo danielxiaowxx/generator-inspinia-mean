@@ -14,7 +14,7 @@ var <%= camelModuleName %>Ctrl = require('../controllers/<%= moduleName %>.serve
 module.exports = function (app) {
 
   app.use('/api/<%= moduleName %>', new Router()
-      .get('/queryMockList', apiHandler(<%= camelModuleName %>Ctrl.queryMockList))
+      .get('/queryMockList.gm', apiHandler(<%= camelModuleName %>Ctrl.queryMockList))
       // Don't touch me
   );
 
