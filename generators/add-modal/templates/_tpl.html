@@ -2,18 +2,16 @@
     <div class="modal-header">
         <h3 class="modal-title"><%= modalName %></h3>
     </div>
-    <div class="modal-body">
 
-        <!--blank modal start-->
-        Blank modal view with controller: <%= firstCapCamelModuleName %><%= firstCapCamelModalName %>Ctrl
-        <!--blank modal end-->
-
-        <!--form modal start-->
-        <form name="data_form" novalidate ng-submit="ok()" class="form-horizontal">
+    <!--form modal start-->
+    <form name="data_form" novalidate ng-submit="ok()" class="form-horizontal">
+        <div class="modal-body">
             <div class="form-group">
                 <label class="col-lg-2 control-label"><b class="text-danger">*</b>示例标签:</label>
+
                 <div class="col-lg-10">
-                    <input name="demoField" ng-model="formData.demoField" ng-maxlength="20" required type="text" class="form-control">
+                    <input name="demoField" ng-model="formData.demoField" ng-maxlength="20" required type="text"
+                           class="form-control">
 
                     <div class="m-t-xs" ng-show="data_form.demoField.$invalid && data_form.submitted">
                         <small class="text-danger" ng-show="data_form.demoField.$error.required">示例标签必填</small>
@@ -21,12 +19,22 @@
                     </div>
                 </div>
             </div>
-        </form>
-        <!--form modal end-->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+    <!--form modal end-->
 
+    <!--blank modal start-->
+    <div class="modal-body">
+        Blank modal view with controller: <%= firstCapCamelModuleName %><%= firstCapCamelModalName %>Ctrl
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>
+    <!--blank modal end-->
+
 </div>
