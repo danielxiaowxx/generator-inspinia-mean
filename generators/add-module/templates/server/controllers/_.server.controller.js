@@ -11,7 +11,7 @@ var Promise = require('bluebird');
 
 var gmRequest = require(path.resolve('./modules/core/server/common/gmRequest'));
 
-exports.queryMockList = function(params) {
+exports.queryMockList = function(inputParams) {
   var result = {
     items: [
       {

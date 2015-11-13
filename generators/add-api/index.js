@@ -77,7 +77,7 @@ module.exports = yeoman.generators.Base.extend({
       insertPrev: true,
       needle    : "// Don't touch me",
       splicable : [
-        "exports." + this.apiName + " = function(params) {",
+        "exports." + this.apiName + " = function(inputParams) {",
         "  var result = 'Hello Daniel';",
         "  return result;",
         "};\n"
