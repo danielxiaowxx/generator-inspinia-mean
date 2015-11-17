@@ -12,7 +12,7 @@
         </div>
         <div class="ibox-content">
 
-          <form ng-submit="search()">
+          <form ng-submit="startNewSearch()">
 
             <!--常用搜索条件-->
             <div class="row">
@@ -75,7 +75,7 @@
       <!--搜索条件-->
       <div class="ibox-content m-b-sm border-bottom">
 
-        <form ng-submit="search()">
+        <form ng-submit="startNewSearch()">
 
           <div class="row">
             <div class="col-sm-3">
@@ -162,7 +162,7 @@
               <div class="hr-line-dashed"></div>
 
               <!--列表数据-->
-              <table d-table class="table table-striped table-hover rwd-table">
+              <table d-table d-table-instance="tableInstance" class="table table-striped table-hover rwd-table">
                 <thead>
 
                 <!--column config start-->

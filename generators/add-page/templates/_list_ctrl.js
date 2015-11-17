@@ -18,6 +18,12 @@
 
       /*========== Scope Models ==================================================*/
 
+      /**
+       * 表格实例对象
+       * @type {{}}
+       */
+      $scope.tableInstance = {};
+
       // -- adv search start //
       /**
        * 显示高级查询
@@ -61,11 +67,19 @@
       /*========== Scope Functions ==================================================*/
 
       /**
+       * 开始一个新的查询
+       */
+      $scope.startNewSearch = function() {
+        $scope.tableInstance.resetSortCondition();
+        $scope.search(true);
+      };
+
+      /**
        * 重置查询表单
        */
       $scope.reset = function() {
         $scope.searchParams = _.clone(defQueryParams);
-        $scope.search();
+        $scope.startNewSearch();
       };
 
       /**
@@ -82,8 +96,11 @@
        * @param field
        */
       $scope.sortSearch = function(sort, field) {
-        console.log(sort, field);
-        $scope.search();
+        $scope.sortFeature.sortInfo = {
+          field: field,
+          isDesc: sort === 'desc' ? true : false
+        };
+        $scope.search(true);
       };
 
       // -- select all start //
@@ -132,14 +149,29 @@
 
             if (isResetPageNum) self.pagerOptions.pageNum = 1;
 
-            <%= firstCapCamelModuleName %>HttpService.queryMockList(self.searchParams, self.pagerOptions.pageNum, self.pagerOptions.pageSize).success(function(data) {
+            <%= firstCapCamelModuleName %>HttpService.queryMockList(self.searchParams, self.pagerOptions.pageNum, self.pagerOptions.pageSize, self.sortFeature.sortInfo).success(function(data) {
               self.listData = data.items;
               self.pagerOptions.totalItems = data.total;
+
+              self.sortFeature.resetSortCondition();
             });
           },
 
+          // 5. 排序查询特性
+          sortFeature: {
+            sortInfo: {},
+
+            // 重置查询条件
+            resetSortCondition: function() {
+              this.sortInfo = {
+                field: '',
+                isDesc: true
+              };
+            }
+          },
+
           // -- select all start //
-          // 5. 选择特性（全选/取消选选）
+          // 6. 选择特性（全选/取消选选）
           selectFeature: {
             isSelectedAll: false,
             /**
