@@ -144,14 +144,19 @@
           listData: [],
 
           // 4. 查询方法
+          loadingListData: false,
           search: function(isResetPageNum) {
             var self = this;
+
+            self.loadingListData = true;
 
             if (isResetPageNum) self.pagerOptions.pageNum = 1;
 
             <%= firstCapCamelModuleName %>HttpService.queryMockList(self.searchParams, self.pagerOptions.pageNum, self.pagerOptions.pageSize, self.sortFeature.sortInfo).success(function(data) {
               self.listData = data.items;
               self.pagerOptions.totalItems = data.total;
+
+              self.loadingListData = false;
 
               self.sortFeature.resetSortCondition();
             });

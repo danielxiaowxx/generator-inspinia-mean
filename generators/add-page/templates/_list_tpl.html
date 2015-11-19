@@ -252,9 +252,21 @@
                 </tbody>
 
                 <tfoot>
+
+                <!--没有数据-->
+                <tr ng-show="!loadingListData && listData.length === 0">
+                  <td colspan="{{getVisibleColumnTotal()}}">
+                    <div class="widget p-lg text-center">
+                      <div class="m-b-md">
+                        <h1 class="m-xs">没有数据</h1>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!--分页-->
                 <tr>
                   <td colspan="{{getVisibleColumnTotal()}}">
-                    <!--分页-->
                     <div pagination total-items="pagerOptions.totalItems" items-per-page="pagerOptions.pageSize"
                       ng-model="pagerOptions.pageNum" max-size="5" direction-links="false" boundary-links="true"
                       ng-change="search()" class="pull-right"></div>
