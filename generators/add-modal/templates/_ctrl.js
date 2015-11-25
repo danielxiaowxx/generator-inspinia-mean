@@ -2,11 +2,13 @@
 
   'use strict';
 
-  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelModalName %>Controller', ['$scope', '$modalInstance',
+  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelModalName %>Controller', ['$scope', '$modalInstance', 'i18n',
 
-    function ($scope, $modalInstance) {
+    function ($scope, $modalInstance, i18n) {
 
       /*========== Scope Models ==================================================*/
+
+      $scope.i18n = i18n.getI18nData('<%= moduleName %>');
 
       // -- form modal start //
       $scope.formData = {

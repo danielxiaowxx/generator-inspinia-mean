@@ -3,9 +3,9 @@
 
   'use strict';
 
-  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelCtrlName %>Controller', ['$scope', '$stateParams', '$location', '<%= firstCapCamelModuleName %>HttpService',
+  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelCtrlName %>Controller', ['$scope', '$stateParams', '$location', 'i18n', '<%= firstCapCamelModuleName %>HttpService',
 
-    function ($scope, $stateParams, $location, <%= firstCapCamelModuleName %>HttpService) {
+    function ($scope, $stateParams, $location, i18n, <%= firstCapCamelModuleName %>HttpService) {
 
       var defQueryParams = {
         param1    : '',
@@ -17,6 +17,8 @@
       };
 
       /*========== Scope Models ==================================================*/
+
+      $scope.i18n = i18n.getI18nData('<%= moduleName %>');
 
       /**
        * 表格实例对象

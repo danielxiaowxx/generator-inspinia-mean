@@ -9,7 +9,12 @@ var _ = require('lodash');
 var GMAPI = require('gm-open-api');
 var Promise = require('bluebird');
 
+var i18n = require('../i18n/');
 var gmRequest = require(path.resolve('./modules/core/server/common/gmRequest'));
+
+exports.getI18nScriptData = function(language) {
+  return 'window.<%= moduleName %>_i18n = ' + JSON.stringify(i18n.getI18NContent(language || 'en'));
+};
 
 exports.queryMockList = function(inputParams) {
 
