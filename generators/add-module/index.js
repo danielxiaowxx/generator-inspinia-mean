@@ -43,7 +43,7 @@ module.exports = yeoman.generators.Base.extend({
 
     glob(folderPath + "**/_.*", {}, function(er, files) {
       _.each(files, function(filePath) {
-        var fileName = filePath.replace(/.*_/, '');
+        var fileName = filePath.replace(/.*?_/, '');
         var tplDir = filePath.replace(/\/[^\/]*$/, '');
         self.fs.copyTpl(
           filePath,
@@ -66,6 +66,7 @@ module.exports = yeoman.generators.Base.extend({
       'client/config/_.*.js',
       'client/services/_.*.js',
       'server/common/_.*.js',
+      'server/i18n/_.*.js',
       'server/controllers/_.*.js',
       'server/models/_.*.js',
       'server/policies/_.*.js',
