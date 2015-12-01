@@ -71,6 +71,7 @@ module.exports = yeoman.generators.Base.extend({
       'server/models/_.*.js',
       'server/policies/_.*.js',
       'server/routes/_.*.js',
+      'server/settings/_.*.js',
       'tests/client/_.*.js',
       'tests/server/_.*.js',
       'tests/e2e/_.*.js'
