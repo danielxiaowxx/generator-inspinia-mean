@@ -215,7 +215,7 @@ module.exports = yeoman.generators.Base.extend({
       splicable : [
         ".state('" + this.moduleName + "." + this.ctrlName + "', {",
         "  url: '/" + this.ctrlName + "',",
-        "  templateUrl: 'modules/" + this.moduleName + "/client/views/" + this.ctrlName + ".client.view.html',",
+        "  templateUrl: window.tmplVersionPlus('modules/" + this.moduleName + "/client/views/" + this.ctrlName + ".client.view.html'),",
         "  data: { pageTitle: '" + this.ctrlName + "' },",
         "  resolve: {",
         "    loadPlugin: ['$ocLazyLoad', 'utilService', function ($ocLazyLoad, utilService) {",

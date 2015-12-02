@@ -114,7 +114,7 @@ module.exports = yeoman.generators.Base.extend({
     logger.log('=========================');
     logger.log("var modalInstance = $modal.open({");
     // modules/products/client/views/list.client.view.html
-    logger.log("  templateUrl: 'modules/" + this.moduleName + "/client/views/" + this.modalName + ".client.view.html',");
+    logger.log("  templateUrl: window.tmplVersionPlus('modules/" + this.moduleName + "/client/views/" + this.modalName + ".client.view.html'),");
     logger.log("  controller: '" + this.firstCapCamelModuleName + this.firstCapCamelModalName + "Controller'");
     logger.log("});");
     logger.log("");
