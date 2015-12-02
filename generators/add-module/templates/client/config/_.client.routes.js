@@ -10,12 +10,12 @@ angular.module('<%= moduleName %>').config(['$stateProvider',
         url: '/<%= moduleName %>',
         template: '<ui-view/>',
         resolve: {
-          loadPlugin: ['$ocLazyLoad', function ($ocLazyLoad) {
-            return $ocLazyLoad.load([
+          loadPlugin: ['$ocLazyLoad', 'utilService', function ($ocLazyLoad, utilService) {
+            return $ocLazyLoad.load(utilService.assetsVersionPlus([
               {
                 files: ['script/<%= moduleName %>/i18n.js?_=' + new Date().getTime()]
               }
-            ]);
+            ]));
           }]
         }
       })
