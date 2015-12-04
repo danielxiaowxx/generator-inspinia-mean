@@ -1,5 +1,5 @@
 exports.i18nData = {
-  <%= moduleName %>: {
+  <%= camelModuleName %>: {
     hello: 'Hello'
   }
 };
