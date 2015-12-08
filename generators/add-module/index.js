@@ -76,6 +76,14 @@ module.exports = yeoman.generators.Base.extend({
       'tests/server/_.*.js',
       'tests/e2e/_.*.js'
     ], folder)
+  },
+
+  usageTip: function() {
+    logger.log('=========================');
+    logger.log('Congratulations, module added successfully!');
+    logger.green("Now You can run: 'yo inspinia-mean:add-page' to add your first page");
+    logger.log("Gook Luck!");
+    logger.log('=========================');
   }
 
 });
