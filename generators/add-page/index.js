@@ -132,7 +132,12 @@ module.exports = yeoman.generators.Base.extend({
           if (self.advSearch == 'Yes') {
             contents = contents.replace(/\/\/ -- adv search start \/\//g, '');
             contents = contents.replace(/\/\/ adv search end -- \/\//g, '');
+
+            contents = contents.replace(/\/\/ -- normal search start[\s\S]*?normal search end -- \/\//g, '');
           } else {
+            contents = contents.replace(/\/\/ -- normal search start \/\//g, '');
+            contents = contents.replace(/\/\/ normal search start -- \/\//g, '');
+
             contents = contents.replace(/\/\/ -- adv search start[\s\S]*?adv search end -- \/\//g, '');
           }
 

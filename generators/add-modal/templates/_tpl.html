@@ -21,8 +21,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" type="submit">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            <button class="btn btn-primary" type="submit">{{::i18n.ok}}</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">{{::i18n.cancel}}</button>
         </div>
     </form>
     <!--form modal end-->
@@ -32,8 +32,8 @@
         Blank modal view with controller: <%= firstCapCamelModuleName %><%= firstCapCamelModalName %>Ctrl
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" type="button" ng-click="ok()">{{::i18n.ok}}</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">{{::i18n.cancel}}</button>
     </div>
     <!--blank modal end-->
 

@@ -5,70 +5,7 @@
 
       <!--adv search start-->
       <!--查询条件-->
-      <div class="ibox">
-        <div class="ibox-title">
-          <h5>查询条件</h5>
-          <div ibox-tools show-config="false" show-close="false"></div>
-        </div>
-        <div class="ibox-content">
-
-          <form ng-submit="startNewSearch()">
-
-            <!--常用搜索条件-->
-            <div class="row">
-              <div class="col-sm-3">
-                <div class="form-group">
-                  <label class="control-label">查询条件1</label>
-                  <input ng-model="searchParams.param1" type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="form-group">
-                  <label class="control-label">查询条件2</label>
-                  <div class="query-range">
-                    <input ng-model="searchParams.param2_min" type="number" class="form-control">
-                    <p>-</p>
-                    <input ng-model="searchParams.param2_max" type="number" class="form-control">
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="form-group">
-                  <label class="control-label">查询条件3</label>
-                  <div class="query-checkbox">
-                    <label class="checkbox-inline">
-                      <input icheck ng-model="searchParams.param3_1" type="checkbox"> 可选1
-                    </label>
-                    <label class="checkbox-inline">
-                      <input icheck ng-model="searchParams.param3_2" type="checkbox"> 可选2
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!--高级查询条件-->
-            <div ng-show="showAdvSearch" class="row">
-              <div class="col-sm-3">
-                <div class="form-group">
-                  <label class="control-label">查询条件4</label>
-                  <input ng-model="searchParams.param4" type="text" class="form-control">
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-12 text-center">
-                <button type="submit" class="btn btn-w-m btn-warning">查询</button>
-                <button ng-click="reset()" type="button" class="btn btn-w-m btn-info">重置</button>
-                <button btn-checkbox ng-model="showAdvSearch" type="button" class="btn btn-w-m btn-success pull-right">高级查询</button>
-              </div>
-            </div>
-
-          </form>
-
-        </div>
-      </div>
+      <div filters-box params-config="filterConfigList" params-model="filterParams" on-filter="startNewSearch()"></div>
       <!--adv search end-->
 
       <!--normal search start-->
@@ -111,8 +48,8 @@
 
           <div class="row">
             <div class="col-sm-12 text-center">
-              <button type="submit" class="btn btn-w-m btn-warning">查询</button>
-              <button ng-click="reset()" type="button" class="btn btn-w-m btn-info">重置</button>
+              <button type="submit" class="btn btn-w-m btn-warning">{{::i18n.search}}</button>
+              <button ng-click="reset()" type="button" class="btn btn-w-m btn-info">{{::i18n.reset}}</button>
             </div>
           </div>
 
@@ -132,7 +69,7 @@
                 <div class="col-lg-12">
 
                   <!--select all start-->
-                  <button ng-click="batchRemoveItems()" type="button" class="btn btn-w-m btn-primary">批量删除</button>
+                  <button ng-click="batchRemoveItems()" type="button" class="btn btn-w-m btn-primary">{{::i18n.batchDel}}</button>
                   <!--select all end-->
 
                   <div class="tool-bar-right">
@@ -217,7 +154,7 @@
 
                   <td ng-show="allTableColumns[3].checked" data-th="{{::allTableColumns[3].label}}">
                     <div class="btn-group">
-                      <button class="btn-warning btn btn-sm">删除</button>
+                      <button class="btn-warning btn btn-sm">{{::i18n.delete}}</button>
                     </div>
                   </td>
 
@@ -242,7 +179,7 @@
 
                   <td data-th="{{::allTableColumns[3].label}}">
                     <div class="btn-group">
-                      <button class="btn-warning btn btn-sm">删除</button>
+                      <button class="btn-warning btn btn-sm">{{::i18n.delete}}</button>
                     </div>
                   </td>
 
@@ -258,7 +195,7 @@
                   <td colspan="{{getVisibleColumnTotal()}}">
                     <div class="widget p-lg text-center">
                       <div class="m-b-md">
-                        <h1 class="m-xs">没有数据</h1>
+                        <h1 class="m-xs">{{::i18n.noData}}</h1>
                       </div>
                     </div>
                   </td>
@@ -268,8 +205,9 @@
                 <tr>
                   <td colspan="{{getVisibleColumnTotal()}}">
                     <div pagination total-items="pagerOptions.totalItems" items-per-page="pagerOptions.pageSize"
-                      ng-model="pagerOptions.pageNum" max-size="5" direction-links="false" boundary-links="true"
-                      ng-change="search()" class="pull-right"></div>
+                         ng-model="pagerOptions.pageNum" max-size="5" direction-links="false" boundary-links="true"
+                         first-text="{{::i18n.firstPage}}" last-text="{{::i18n.lastPage}}"
+                         ng-change="search()" class="pull-right"></div>
                   </td>
                 </tr>
 

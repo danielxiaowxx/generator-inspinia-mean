@@ -8,31 +8,70 @@
     function ($scope, $stateParams, $location, i18n, <%= firstCapCamelModuleName %>HttpService) {
 
       var defQueryParams = {
-        param1    : '',
-        param2_min: '',
-        param2_max: '',
-        param3_1  : '',
-        param3_2  : '',
-        param4    : ''
+        field1: '',
+        field2: '',
+        field3: -1,
+        field4: -1
       };
 
       /*========== Scope Models ==================================================*/
 
       $scope.i18n = i18n.getI18nData('<%= moduleName %>');
 
+      $scope.filterParams = _.clone(defQueryParams);
+
+      // -- adv search start //
+
+      $scope.filterConfigList = [
+        {
+          fieldName: 'field1',
+          conditionName: '文本查询',
+          type: 'input'
+        },
+        {
+          fieldName: 'field2',
+          conditionName: '日期查询',
+          type: 'time'
+        },
+        {
+          fieldName: 'field3',
+          conditionName: '单选查询',
+          type: 'single',
+          data: [
+            {
+              value: 0,
+              label: '条件一'
+            },
+            {
+              value: 1,
+              label: '条件二'
+            }
+          ]
+        },
+        {
+          fieldName: 'field4',
+          conditionName: '多选查询',
+          type: 'multi',
+          data: [
+            {
+              value: 0,
+              label: '条件一'
+            },
+            {
+              value:1,
+              label:'条件二'
+            }
+          ]
+        }
+      ];
+
+      // adv search end -- //
+
       /**
        * 表格实例对象
        * @type {{}}
        */
       $scope.tableInstance = {};
-
-      // -- adv search start //
-      /**
-       * 显示高级查询
-       * @type {boolean}
-       */
-      $scope.showAdvSearch = false;
-      // adv search end -- //
 
       /**
        * 可显示的所有列名
@@ -76,6 +115,7 @@
         $scope.search(true);
       };
 
+      // -- normal search start //
       /**
        * 重置查询表单
        */
@@ -83,6 +123,7 @@
         $scope.searchParams = _.clone(defQueryParams);
         $scope.startNewSearch();
       };
+      // normal search end -- //
 
       /**
        * 取得可见列总数
@@ -133,7 +174,7 @@
         _.extend($scope, {
 
           // 1. 定义查询条件
-          searchParams: _.clone(defQueryParams),
+          searchParams: $scope.filterParams,
 
           // 2. 定义分页配置
           pagerOptions: {
