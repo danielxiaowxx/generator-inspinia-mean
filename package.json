@@ -1,6 +1,6 @@
 {
   "name": "generator-inspinia-mean",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "generators/app/index.js",

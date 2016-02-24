@@ -20,5 +20,5 @@ angular.module('<%= moduleName %>').run(['Menus',
 ]);
 
 angular.module('<%= moduleName %>').constant('<%= firstCapCamelModuleName %>Const', {
-
+  I18N: window.<%= moduleName %>_i18n
 });
