@@ -210,6 +210,32 @@ module.exports = yeoman.generators.Base.extend({
       });
   },
 
+  copyFormTypeTemplates: function() {
+
+    if (this.pageType !== 'Form') return;
+
+    this.fs.copyTpl(
+      this.templatePath('./_form_ctrl.js'),
+      this.destinationPath(ctrlFolderPath + this.ctrlName + '.client.controller.js'),
+      {
+        moduleName             : this.moduleName,
+        firstCapCamelCtrlName  : this.firstCapCamelCtrlName,
+        firstCapCamelModuleName: this.firstCapCamelModuleName
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('./_form_tpl.html'),
+      this.destinationPath(tplFolderPath + this.ctrlName + '.client.view.html'),
+      {
+        moduleName             : this.moduleName,
+        firstCapCamelCtrlName  : this.firstCapCamelCtrlName,
+        firstCapCamelModuleName: this.firstCapCamelModuleName
+      }
+    );
+
+  },
+
 
   addRoute: function() {
     var fullPath = 'modules/' + this.moduleName + '/client/config/' + this.moduleName + '.client.routes.js';

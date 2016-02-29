@@ -2,9 +2,9 @@
 
   'use strict';
 
-  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelModalName %>Controller', ['$scope', '$modalInstance', 'i18n',
+  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelModalName %>Controller', ['$scope', '$modalInstance', 'i18n', '<%= firstCapCamelModuleName %>HttpService',
 
-    function ($scope, $modalInstance, i18n) {
+    function ($scope, $modalInstance, i18n, <%= firstCapCamelModuleName %>HttpService) {
 
       /*========== Scope Models ==================================================*/
 
@@ -14,17 +14,28 @@
       $scope.formData = {
         demoField: ''
       };
+
+      $scope.submitting = false;
       // form modal end -- //
 
       /*========== Scope Functions ==================================================*/
 
       // -- form modal start //
       $scope.ok = function() {
-        if ($scope.data_form.$valid) {
-          $modalInstance.close();
+
+        if (_validForm()) {
+          $scope.submitting = true;
+
+          // TODO 请修改成实际调用的API并把该注释删掉
+          <%= firstCapCamelModuleName %>HttpService.queryMockList().success(function() {
+            $modalInstance.close();
+          }).finally(function() {
+            $scope.submitting = false;
+          });
         } else {
           $scope.data_form.submitted = true;
         }
+
       };
       // form modal end -- //
 
@@ -43,6 +54,13 @@
       /*========== Watches ==================================================*/
 
       /*========== Private Functions ==================================================*/
+
+      // -- form modal start //
+      function _validForm() {
+        var result = $scope.data_form.$valid;
+        return result;
+      }
+      // form modal end -- //
 
       function _init() {
       }

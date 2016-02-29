@@ -9,6 +9,7 @@ exports.i18nData = {
     search: 'Search',
     reset: 'Reset',
     ok: 'OK',
-    cancel: 'Cancel'
+    cancel: 'Cancel',
+    submit: 'Submit'
   }
 };

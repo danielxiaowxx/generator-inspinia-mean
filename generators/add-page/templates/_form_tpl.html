@@ -1,0 +1,52 @@
+<div ng-controller="<%= firstCapCamelModuleName %><%= firstCapCamelCtrlName %>Controller" class="wrapper wrapper-content <%= moduleName %>">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+
+                    <form name="data_form" novalidate ng-submit="submit()" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"><b class="text-danger">*</b>文本字段:</label>
+
+                            <div class="col-lg-10">
+                                <input name="field1" ng-model="formData.field1"
+                                       required ng-maxlength="20" type="text" class="form-control">
+
+                                <div class="m-t-xs" ng-show="data_form.field1.$invalid && data_form.submitted">
+                                    <small class="text-danger" ng-show="data_form.field1.$error.required">必填提示</small>
+                                    <small class="text-danger" ng-show="data_form.field1.$error.maxlength">不能大于20个字符提示</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">时间字段:</label>
+
+                            <div class="col-lg-10">
+                                <div class="input-group date">
+                                    <input date-time ng-model="formData.field2" view="hours" auto-close="true"
+                                           type="datetime"
+                                           class="form-control">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-white" type="button" ng-click="cancel()">{{::i18n.cancel}}</button>
+                                <button ladda="submitting" class="btn btn-primary" type="submit">{{::i18n.submit}}</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

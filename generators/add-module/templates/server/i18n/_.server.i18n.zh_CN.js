@@ -9,6 +9,7 @@ exports.i18nData = {
     search: '查询',
     reset: '重置',
     ok: '确定',
-    cancel: '取消'
+    cancel: '取消',
+    submit: '提交'
   }
 };
