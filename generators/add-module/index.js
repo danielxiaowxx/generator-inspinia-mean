@@ -68,6 +68,7 @@ module.exports = yeoman.generators.Base.extend({
       'server/common/_.*.js',
       'server/i18n/_.*.js',
       'server/controllers/_.*.js',
+      'server/daos/_.*.js',
       'server/policies/_.*.js',
       'server/routes/_.*.js',
       'server/settings/_.*.js',
