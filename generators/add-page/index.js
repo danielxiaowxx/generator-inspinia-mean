@@ -100,7 +100,8 @@ module.exports = yeoman.generators.Base.extend({
       {
         moduleName             : this.moduleName,
         firstCapCamelCtrlName  : this.firstCapCamelCtrlName,
-        firstCapCamelModuleName: this.firstCapCamelModuleName
+        firstCapCamelModuleName: this.firstCapCamelModuleName,
+        ctrlName               : this.ctrlName
       }
     );
 
@@ -161,7 +162,8 @@ module.exports = yeoman.generators.Base.extend({
           return _.template(contents, {})({
             moduleName             : self.moduleName,
             firstCapCamelCtrlName  : self.firstCapCamelCtrlName,
-            firstCapCamelModuleName: self.firstCapCamelModuleName
+            firstCapCamelModuleName: self.firstCapCamelModuleName,
+            ctrlName               : self.ctrlName
           });
         }
       });
@@ -220,7 +222,8 @@ module.exports = yeoman.generators.Base.extend({
       {
         moduleName             : this.moduleName,
         firstCapCamelCtrlName  : this.firstCapCamelCtrlName,
-        firstCapCamelModuleName: this.firstCapCamelModuleName
+        firstCapCamelModuleName: this.firstCapCamelModuleName,
+        ctrlName               : this.ctrlName
       }
     );
 

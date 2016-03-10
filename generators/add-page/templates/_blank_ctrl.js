@@ -15,8 +15,10 @@
 
       /*========== Listeners ==================================================*/
 
-      $scope.$on('$stateChangeSuccess', function() {
-        _init();
+      $scope.$on('$stateChangeSuccess', function(event, toState) {
+        if (toState.name === '<%= moduleName %>.<%= ctrlName %>') {
+          _init();
+        }
       });
 
       /*========== Watches ==================================================*/
