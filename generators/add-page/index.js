@@ -99,6 +99,7 @@ module.exports = yeoman.generators.Base.extend({
       this.destinationPath(ctrlFolderPath + this.ctrlName + '.client.controller.js'),
       {
         moduleName             : this.moduleName,
+        camelModuleName        : this.camelModuleName,
         firstCapCamelCtrlName  : this.firstCapCamelCtrlName,
         firstCapCamelModuleName: this.firstCapCamelModuleName,
         ctrlName               : this.ctrlName
@@ -161,6 +162,7 @@ module.exports = yeoman.generators.Base.extend({
 
           return _.template(contents, {})({
             moduleName             : self.moduleName,
+            camelModuleName        : self.camelModuleName,
             firstCapCamelCtrlName  : self.firstCapCamelCtrlName,
             firstCapCamelModuleName: self.firstCapCamelModuleName,
             ctrlName               : self.ctrlName
@@ -221,6 +223,7 @@ module.exports = yeoman.generators.Base.extend({
       this.destinationPath(ctrlFolderPath + this.ctrlName + '.client.controller.js'),
       {
         moduleName             : this.moduleName,
+        camelModuleName        : this.camelModuleName,
         firstCapCamelCtrlName  : this.firstCapCamelCtrlName,
         firstCapCamelModuleName: this.firstCapCamelModuleName,
         ctrlName               : this.ctrlName
