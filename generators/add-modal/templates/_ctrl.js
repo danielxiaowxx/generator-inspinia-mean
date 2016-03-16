@@ -8,7 +8,7 @@
 
       /*========== Scope Models ==================================================*/
 
-      $scope.i18n = i18n.getI18nData('<%= moduleName %>');
+      $scope.i18n = i18n.getI18nData('<%= camelModuleName %>');
 
       // -- form modal start //
       $scope.formData = {

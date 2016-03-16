@@ -77,6 +77,7 @@ module.exports = yeoman.generators.Base.extend({
 
           return _.template(contents, {})({
             moduleName             : self.moduleName,
+            camelModuleName        : self.camelModuleName,
             firstCapCamelModalName : self.firstCapCamelModalName,
             firstCapCamelModuleName: self.firstCapCamelModuleName
           });
