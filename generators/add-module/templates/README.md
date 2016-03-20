@@ -19,6 +19,7 @@ gulp
 #### 引用angular-busi-directives组件
 
 1. client/assets/less/[module name].less文件的内容前加上以下代码
+
 ```
 @bootstrapPath: "public/lib/bootstrap";
 
@@ -29,6 +30,7 @@ gulp
 ```
 
 2. 在client/config/[module name].client.routes.js中的需要用到组件的路由中加入js引用, 如以下:
+
 ```
 {
   name: 'gm.imagePicker',
@@ -37,11 +39,13 @@ gulp
 ```
 
 3. 在client ctrl中加入以下代码
+
 ```
 $scope.currentLang = i18n.getCurrentLang();
 ```
 
 4. 在client html中引用组件, 如下:
+
 ```
 <div gm-image-picker ng-model="data" gm-image-picker-lang="{{currentLang}}"></div>
 ```
