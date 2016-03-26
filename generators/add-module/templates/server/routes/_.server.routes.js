@@ -21,7 +21,7 @@ module.exports = function (app) {
 
   app.use('/api/<%= moduleName %>', new Router()
       .use(isLoginRequired(<%= camelModuleName %>Setting.withoutLoginPaths))
-      .use(isAllowed(<%= camelModuleName %>Policies.getACLInstance(), <%= camelModuleName %>Policies.areParamsAllowedHandler))
+      .use(isAllowed(<%= camelModuleName %>Policies.getACLInstance(), <%= camelModuleName %>Policies.areParamsAllowedHandler, <%= camelModuleName %>Setting.withoutLoginPaths))
       .get('/queryMockList.gm', apiHandler(<%= camelModuleName %>Ctrl.queryMockList))
       // Don't touch me
   );

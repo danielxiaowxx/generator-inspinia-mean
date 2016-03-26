@@ -4,21 +4,13 @@
  * Module dependencies.
  */
 var acl = require('acl');
+var path = require('path');
 
-// Using the memory backend
-var aclInstance = new acl(new acl.memoryBackend());
+var config = require(path.resolve('./config/config'));
+var aclInstance;
 
-exports.invokeRolesPolicies = function() {
-  // TODO Daniel: 角色权限配置应该是读取DB的，暂未实现
-  aclInstance.allow([
-    //{
-    //  roles : ['admin'],
-    //  allows: [{
-    //    resources  : '/api/<%= moduleName %>',
-    //    permissions: ['/queryMockList.gm']
-    //  }]
-    //}
-  ]);
+exports.invokeRolesPolicies = function(db) {
+  aclInstance = new acl(new acl.mongodbBackend(db, config.aclCollectionPrefix, true));
 };
 
 /**

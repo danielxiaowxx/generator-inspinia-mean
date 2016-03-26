@@ -23,13 +23,14 @@ angular.module('<%= moduleName %>').run(['Menus', 'i18n',
       //position: 1, // 用于显示该菜单的排序位置
       //iconClass: '', // 菜单的ICON样式
       //type: 'dropdown', // 有子菜单时把注释去掉
-      roles: ['*']
+      roles: window.getMenuRoles('<%= moduleName %>.list')
     });
 
     // Add the subMenuItem demo
     //Menus.addSubMenuItem('sideBar', '<%= moduleName %>', {
     //  title: 'List <%= firstCapCamelModuleName %>',
-    //  state: '<%= moduleName %>.list'
+    //  state: '<%= moduleName %>.list',
+    //  roles: window.getMenuRoles('<%= moduleName %>.list')
     //});
   }
 ]);
