@@ -41,6 +41,20 @@ module.exports = yeoman.generators.Base.extend({
     var self = this;
     var done = this.async();
 
+    glob(folderPath + "*.md", {}, function(er, files) {
+      _.each(files, function(filePath) {
+        self.fs.copyTpl(
+          filePath,
+          filePath.replace('$.', ''),
+          {
+            moduleName             : self.moduleName,
+            camelModuleName        : self.camelModuleName,
+            firstCapCamelModuleName: self.firstCapCamelModuleName
+          });
+      });
+
+    });
+
     glob(folderPath + "**/_.*", {}, function(er, files) {
       _.each(files, function(filePath) {
         var fileName = filePath.replace(/.*?_/, '');
@@ -61,6 +75,7 @@ module.exports = yeoman.generators.Base.extend({
 
   removeFiles: function() {
     common.removeFiles(this, [
+      './$.README.md',
       'client/assets/less/_.less',
       'client/_.*.js',
       'client/config/_.*.js',
