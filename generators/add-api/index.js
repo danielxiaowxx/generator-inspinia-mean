@@ -16,7 +16,7 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       name    : 'moduleName',
-      message : 'What is your modal\' module name?',
+      message : 'What is your api\' module name?',
       required: true
     }, {
       name    : 'apiName',
