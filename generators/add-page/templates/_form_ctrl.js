@@ -3,9 +3,9 @@
 
   'use strict';
 
-  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelCtrlName %>Controller', ['$scope', 'i18n', '<%= firstCapCamelModuleName %>HttpService',
+  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelCtrlName %>Controller', ['$scope', 'i18n', '<%= firstCapCamelModuleName %>HttpService', 'prompt',
 
-    function ($scope, i18n, <%= firstCapCamelModuleName %>HttpService) {
+    function ($scope, i18n, <%= firstCapCamelModuleName %>HttpService, prompt) {
 
     /*========== Scope Models ==================================================*/
 
@@ -26,7 +26,7 @@
 
         // TODO 请修改成实际调用的API并把该注释删掉
         <%= firstCapCamelModuleName %>HttpService.queryMockList().success(function() {
-
+            prompt.successTips();
         }).finally(function() {
           $scope.submitting = false;
         });
