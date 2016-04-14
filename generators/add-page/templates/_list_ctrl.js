@@ -202,8 +202,6 @@
               self.pagerOptions.totalItems = data.total;
 
               self.loadingListData = false;
-
-              self.sortFeature.resetSortCondition();
             });
           },
 
