@@ -21,7 +21,7 @@ angular.module('<%= moduleName %>').run(['Menus', 'i18n',
       title: getTitle('<%= camelModuleName %>'),
       state: '<%= moduleName %>.list',
       //position: 1, // 用于显示该菜单的排序位置
-      //iconClass: '', // 菜单的ICON样式
+      //class: '', // 菜单的ICON样式
       //type: 'dropdown', // 有子菜单时把注释去掉
       roles: window.getMenuRoles('<%= moduleName %>.list')
     });
