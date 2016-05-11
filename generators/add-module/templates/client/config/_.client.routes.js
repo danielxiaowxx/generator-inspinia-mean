@@ -1,8 +1,10 @@
 'use strict';
 
 // Setting up route
-angular.module('<%= moduleName %>').config(['$stateProvider',
-  function ($stateProvider) {
+angular.module('<%= moduleName %>').config(['$stateProvider', '<%= firstCapCamelModuleName %>Const',
+
+  function ($stateProvider, <%= firstCapCamelModuleName %>Const) {
+
     // <%= firstCapCamelModuleName %> state routing
     $stateProvider
       .state('<%= moduleName %>', {
