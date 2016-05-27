@@ -78,8 +78,11 @@ module.exports = yeoman.generators.Base.extend({
       needle    : "// Don't touch me",
       splicable : [
         "exports." + this.apiName + " = function(inputParams) {",
-        "  var result = 'Hello Daniel';",
-        "  return result;",
+        "  return new Promise(function(resolve) {",
+        "    setTimeout(function() {",
+        "      resolve('Hello Daniel');",
+        "    }, 1000);",
+        "  });",
         "};\n"
       ]
     });
