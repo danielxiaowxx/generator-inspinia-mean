@@ -33,7 +33,6 @@
     "express-session": "^1.11.3",
     "forever": "~0.14.2",
     "glob": "^5.0.13",
-    "gm-open-api": "^4.0.0",
     "helmet": "~0.9.1",
     "jasmine-core": "^2.3.4",
     "js2xls": "^1.0.3",
