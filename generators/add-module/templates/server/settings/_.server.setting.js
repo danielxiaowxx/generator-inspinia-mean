@@ -4,5 +4,5 @@
  * @type {Array}
  */
 exports.withoutLoginPaths = [
-  //'api/<%= moduleName %>/queryMockList.gm',
+  //'api/<%= moduleName %>/queryMockList',
 ];

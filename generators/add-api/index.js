@@ -54,7 +54,7 @@ module.exports = yeoman.generators.Base.extend({
       needle    : "// Don't touch me",
       splicable : [
         this.apiName + ": function(params) {",
-        "  return utilService." + (this.apiMethodType == "get" ? "httpGet" : "httpPost") + "('/api/" + this.moduleName + "/" + this.apiName + ".gm', _.extend(_.omit(params, function(item) { return item === ''; }), {}));",
+        "  return utilService." + (this.apiMethodType == "get" ? "httpGet" : "httpPost") + "('/api/" + this.moduleName + "/" + this.apiName + "', _.extend(_.omit(params, function(item) { return item === ''; }), {}));",
         "},\n"
       ]
     });
@@ -66,7 +66,7 @@ module.exports = yeoman.generators.Base.extend({
       insertPrev: true,
       needle    : "// Don't touch me",
       splicable : [
-        "." + (this.apiMethodType == 'get' ? 'get' : 'post') + "('/" + this.apiName + ".gm', apiHandler(" + this.camelModuleName + "Ctrl." + this.apiName + "))"
+        "." + (this.apiMethodType == 'get' ? 'get' : 'post') + "('/" + this.apiName + "', apiHandler(" + this.camelModuleName + "Ctrl." + this.apiName + "))"
       ]
     });
   },

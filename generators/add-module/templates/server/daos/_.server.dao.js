@@ -2,5 +2,5 @@
 
 var path = require('path');
 
-var gmMysql = require(path.resolve('./modules/core/server/common/gmMysql'));
-var gmMongo = require(path.resolve('./modules/core/server/common/gmMongo'));
+var dnMysql = require(path.resolve('./modules/core/server/common/dnMysql'));
+var dnMongo = require(path.resolve('./modules/core/server/common/dnMongo'));

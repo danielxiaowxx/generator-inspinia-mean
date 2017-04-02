@@ -87,7 +87,7 @@ module.exports = yeoman.generators.Base.extend({
 
     logger.green('Cloning the inspinia-mean-admin repo.......');
 
-    common.exec('git clone http://gitlab.globalmarket.com/daniel/inspinia-mean-admin.git --branch master --single-branch ' + folder)
+    common.exec('git clone https://xwwxx@bitbucket.org/xwwxx/inspinia-mean-admin.git --branch master --single-branch ' + folder)
       .then(function() {
         done();
       })
