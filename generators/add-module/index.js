@@ -3,6 +3,7 @@ var yeoman = require('yeoman-generator');
 var s = require('underscore.string');
 var glob = require("glob");
 var _ = require('lodash');
+var fs = require('fs-extra');
 var common = require('../app/common');
 var logger = require('../app/logger');
 var util = require('../app/util');
@@ -31,10 +32,9 @@ module.exports = yeoman.generators.Base.extend({
 
   copyModule: function() {
     var done = this.async();
-    common.exec('cp -rf ' + this.templatePath('.') + ' ' + this.destinationPath(folderPath)).then(function() {
+    fs.copy(this.templatePath('.'), this.destinationPath(folderPath), err => {
       done();
     })
-
   },
 
   copyTemplates: function() {
