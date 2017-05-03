@@ -3,9 +3,9 @@
 
   'use strict';
 
-  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelCtrlName %>Controller', ['$scope', '$stateParams', '$location', 'i18n', '<%= firstCapCamelModuleName %>HttpService',
+  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelCtrlName %>Controller', ['$scope', '$stateParams', '$location', '<%= firstCapCamelModuleName %>Const', 'i18n', 'prompt', '<%= firstCapCamelModuleName %>HttpService',
 
-    function ($scope, $stateParams, $location, i18n, <%= firstCapCamelModuleName %>HttpService) {
+    function ($scope, $stateParams, $location, <%= firstCapCamelModuleName %>Const, i18n, prompt, <%= firstCapCamelModuleName %>HttpService) {
 
       var defQueryParams = {
         field1: '',
@@ -148,10 +148,37 @@
 
       // -- select all start //
       /**
-       * 批量删除
+       * 删除
        */
-      $scope.batchRemoveItems = function() {
+      $scope.delete = function(item) {
+        var items = [];
+        if (item) { // 单个操作
+          items = [item];
+        } else { // 批量操作
+          items = _.chain($scope.listData)
+            .filter(function (item) {
+              return item.checked;
+            })
+            .map(function (item) {
+              return item; // maybe item.id
+            })
+            .value();
+        }
 
+        if (items.length === 0) {
+          var tipMsg = '请选择至少一项';
+          prompt.alert(tipMsg);
+        } else {
+          prompt.confirm('确定要删除吗？').then(function (isConfirm) {
+            if (isConfirm) {
+              // TODO 请修改成实际调用的API并把该注释删掉
+              <%= firstCapCamelModuleName %>HttpService.queryMockList(items).success(function () {
+                prompt.successTips();
+                $scope.search();
+              });
+            }
+          });
+        }
       };
       // select all end -- //
 

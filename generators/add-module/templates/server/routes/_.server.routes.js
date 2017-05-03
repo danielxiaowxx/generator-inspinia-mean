@@ -4,8 +4,7 @@
  * Module dependencies.
  */
 var path = require('path');
-var GMAPI = require('gm-open-api');
-var express = GMAPI.express;
+var express = require('express');
 var Router = express.Router;
 
 var apiHandler = require(path.resolve('./modules/core/server/controllers/core.server.controller')).apiHandler;

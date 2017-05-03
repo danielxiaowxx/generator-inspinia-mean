@@ -3,9 +3,9 @@
 
   'use strict';
 
-  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelCtrlName %>Controller', ['$scope', 'i18n', '<%= firstCapCamelModuleName %>HttpService', 'prompt',
+  angular.module('<%= moduleName %>').controller('<%= firstCapCamelModuleName %><%= firstCapCamelCtrlName %>Controller', ['$scope', '<%= firstCapCamelModuleName %>Const', 'i18n', '<%= firstCapCamelModuleName %>HttpService', 'prompt',
 
-    function ($scope, i18n, <%= firstCapCamelModuleName %>HttpService, prompt) {
+    function ($scope, <%= firstCapCamelModuleName %>Const, i18n, <%= firstCapCamelModuleName %>HttpService, prompt) {
 
     /*========== Scope Models ==================================================*/
 

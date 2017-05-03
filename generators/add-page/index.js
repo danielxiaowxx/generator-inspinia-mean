@@ -252,7 +252,7 @@ module.exports = yeoman.generators.Base.extend({
       splicable : [
         ".state('" + this.moduleName + "." + this.ctrlName + "', {",
         "  url: '/" + this.ctrlName + "',",
-        "  templateUrl: window.tmplVersionPlus('modules/" + this.moduleName + "/client/views/" + this.ctrlName + ".client.view.html'),",
+        "  templateUrl: 'modules/" + this.moduleName + "/client/views/" + this.ctrlName + ".client.view.html',",
         "  data: { pageTitle: " + this.firstCapCamelModuleName + "Const.getMenuAndPTI18N('') },",
         "  resolve: {",
         "    loadPlugin: ['$ocLazyLoad', 'utilService', function ($ocLazyLoad, utilService) {",
